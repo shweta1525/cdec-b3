@@ -10,6 +10,7 @@ resource "aws_instance" "app_server" {
   ebs_block_device {
     volume_size = 10
     volume_type = "gp2"
+    device_name = "/dev/sdf"
   }
 
   tags = {

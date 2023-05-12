@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-083eed19fc801d7a4"
   instance_type = "t2.micro"
   key_name = "ohio-key"
   security_groups = [ "k8s-sg" ]

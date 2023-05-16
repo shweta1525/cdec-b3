@@ -2,7 +2,7 @@ variable "vpc_id" {
   default = "vpc-0021822dacf578eb6"
 }
 
-variable "ingress" {
+variable "instance_type" {
  default = "t2.micro"
 }
 

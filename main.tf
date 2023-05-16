@@ -21,7 +21,7 @@ resource "aws_security_group" "sg1" {
 resource "aws_instance" "example" {
   instance_type = var.instance_type
   key_name = var.key_name
-  vpc_security_group_ids = ["aws_security_group.sg1.ids"]
+  vpc_security_group_ids = ["aws_security_group.sg1.id"]
   ami = var.ami_id
   
 }

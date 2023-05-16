@@ -1,19 +1,28 @@
-provider "aws" {
-  region  = "us-west-2"
+resource "aws_security_group" "sg1" {
+  name        = "my-security-group"
+  description = "Allow All Traffic"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-083eed19fc801d7a4"
-  instance_type = "t2.micro"
-  key_name = "ohio-key"
-  security_groups = [ "k8s-sg" ]
-  ebs_block_device {
-    volume_size = 10
-    volume_type = "gp2"
-    device_name = "/dev/sdf"
-  }
-
-  tags = {
-    Name = "my-tf-server"
-  }
+  instance_type = var.instance_type
+  key_name = var.key_name
+  vpc_security_group_ids = ["aws_security_group.sg1.ids"]
+  ami = var.ami_id
+  
 }

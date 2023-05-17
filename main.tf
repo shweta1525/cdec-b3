@@ -25,7 +25,7 @@ resource "aws_instance" "web-server" {
   vpc_security_group_ids = [aws_security_group.sg15.id]
   key_name = var.key_name
 
-  
+
 }
 
 output "instance-id" {
@@ -35,4 +35,3 @@ output "instance-id" {
 
 output "instance-private-ip" {
   value = aws_instance.web-server.private_ip
-}

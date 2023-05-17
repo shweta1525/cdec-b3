@@ -1,7 +1,8 @@
-resource "aws_security_group" "sg1" {
-  name        = "my-security-group"
+resource "aws_security_group" "sg15" {
+  name        = "terraform-sg"
   description = "Allow All Traffic"
   vpc_id      = var.vpc_id
+
 
   ingress {
     from_port        = 0
@@ -21,7 +22,7 @@ resource "aws_security_group" "sg1" {
 resource "aws_instance" "web-server" {
   ami = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.sg1.id]
+  vpc_security_group_ids = [aws_security_group.sg15.id]
   key_name = var.key_name
 
   
